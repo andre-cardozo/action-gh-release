@@ -24,7 +24,7 @@ export interface Release {
   target_commitish: string;
   draft: boolean;
   prerelease: boolean;
-  assets: Array<{ id: number; name: string }>;
+  //assets: Array<{ id: number; name: string }>;
 }
 
 export interface Releaser {

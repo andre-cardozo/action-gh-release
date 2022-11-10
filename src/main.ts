@@ -32,11 +32,6 @@ async function run() {
       }
     }
 
-    // const oktokit = GitHub.plugin(
-    //   require("@octokit/plugin-throttling"),
-    //   require("@octokit/plugin-retry")
-    // );
-
     const gh = getOctokit(config.github_token, {
       //new oktokit(
       throttle: {
@@ -65,23 +60,7 @@ async function run() {
       if (files.length == 0) {
         console.warn(`🤔 ${config.input_files} not include valid file.`);
       }
-      const currentAssets = rel.assets;
-      const assets = await Promise.all(
-        files.map(async path => {
-          const json = await upload(
-            config,
-            gh,
-            uploadUrl(rel.upload_url),
-            path,
-            currentAssets
-          );
-          delete json.uploader;
-          return json;
-        })
-      ).catch(error => {
-        throw error;
-      });
-      setOutput("assets", assets);
+      
     }
     console.log(`🎉 Release ready at ${rel.html_url}`);
     setOutput("url", rel.html_url);

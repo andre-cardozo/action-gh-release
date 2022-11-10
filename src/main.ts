@@ -56,7 +56,7 @@ async function run() {
     //);
     const rel = await release(config, new GitHubReleaser(gh));
     
-    console.log(`🎉 Release ready at ${rel.html_url}`);
+    console.log(`🎉 Release ready at.... ${rel.html_url}`);
     setOutput("url", rel.html_url);
     setOutput("id", rel.id.toString());
     setOutput("upload_url", rel.upload_url);
